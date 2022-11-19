@@ -5,7 +5,7 @@ endpoint_add_udp "0.0.0.0:30120"
 ## ESX ADD ##
 # set mysql_connection_string "server=localhost;database=sesx;userid=db_user;password=db_pass;"
 
-set mysql_connection_string "server=localhost;database=raino;userid=db_user"
+set mysql_connection_string "server=localhost;database=raino;userid=root"
 
 setr esx_MenuAlign "top-right" ## As required by esx_advancedvehicleshop
 
