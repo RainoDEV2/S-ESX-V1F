@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script src="scripts.js" type="text/javascript"></script>
+        <script src="debounce.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+        <title>Inventory</title>
+    </head>
+
+    <body style="position: relative">
+        <div id="ActionBar"></div>
+        <div id="UseBar"></div>
+        <div id="app" style="height: 100%; width: 100%">
+            <div id="inventory-wrapper" class="inventory" style="height: 100%; width: 100%">
+                <div class="move-form" id="inventory-wrapper">
+                    <div class="move-center" id="usearea">
+                        <input tabindex="-1" type="number" id="move-amount" max="9999" min="0" readonly placeholder="Miktar" />
+                        <img src="./hand-holding-solid.png" class="Use" id="usearea" />
+                        <img src="./hand-holding-solid-give.png" class="Give" id="give" />
+                        <div id="kiyafetlerim" class="buttondude Kiyafetler">Kıyafetlerim</div>
+                        <div id="CloseInv" class="buttondude CloseInv">Kapat</div>
+                       
+                        
+                    </div>
+                    <div class="bottom-buttons">
+                        <span class="bottom-button settings-button" onclick="$('.settings-menu').fadeIn();">⚙️</span>
+                        <span
+                            class="bottom-button help-button"
+                            onmouseover="$('.help-menu').fadeIn();"
+                            onmouseout="$('.help-menu').fadeOut();"
+                        >
+                            ?
+                        </span>
+                    </div>
+                </div>
+                <div id="Logs" class="Logs"></div>
+                <div id="CurrentInformation" class="CurrentInformation"></div>
+                <div id="containers-wrapper">
+                    <div id="wrapPersonalWeight" class="wrapPersonalWeight"></div>
+                    <div id="wrapSecondaryWeight" class="wrapSecondaryWeight"></div>
+                    <div id="wrapmain" onfocus="this.blur();" class="wrapmain"></div>
+                    <div id="wrapsecondary" onfocus="this.blur();" class="wrapsecondary"></div>
+                </div>
+                <div id="draggedItem"></div>
+
+                <div class="help-menu">
+                    <h3>Ts3 Bağlantı : 1881ss  - Saltychat :</h3>
+                    <p>
+                        Giriş İkramiyeniz Bankaya Yatar <br />
+                        Market Galeri V.B Yerler (Alt) tuşuna basarak mause ile seçilierek açılır
+                        <br />
+                        <strong>Kıyafetçi</strong> Mağazaya Girdikten Sonra F3 Menüden Aktif Edilir.
+                        <br />
+                        Galeriden Aldıgınız Araçlar (f2) Envantere Gelen Anahtarı Kullan Diyerek Kilitlenir - Düz Kontak Yapılan Araçlar U tusu İle kilitlenir
+                    </p>
+                    <h3>Tuşlar (Varsayılan):</h3>
+                    <ul>
+                        <li>Fare Tekerleğini Öne İttir (KONTAK KAPANIR)</li>
+                        <li>ALT tuşu Ve Mause NPC Mağazaları Açar</li>
+                        <li>Meslekler F3 tuşundan açılır</li>
+                        <li>F tuşu hastanede tayaga yatıp tedavi olursunuz</li>
+                        <li>Kullanmak İstediğiniz İtemi F2 de Kullana Sürükleyerek Açabilirsiniz</li>
+                        <hr />
+                        <li>Scroll Wheel: Miktarın üzerine geldiğinde artıcak/azalıcaktır.</li>
+                        <li>Numaralar 0 - 9: Yazılan numarayı girecek.</li>
+                        <li>Başka herhangi bir anahtar: Miktar değerini boş bırakacak/tüm eşyayı taşıyacaktır.</li>
+                        <hr />
+                        <li>Bir öğernin üzerine gelirken CTRL+C tuşuna basmak, açıklamayı kopyalar ve kanıt alırken yararlıdır.</li>
+                    </ul>
+                    <h3>Market:</h3>
+                    <p>Satın almak istediğiniz tutarı MİKTAR alanına girin ardından mağza öğesini envanterinize sürükleyin.</p>
+                    <h3>Üretim:</h3>
+                    <p>
+                        Açılması uzun süren herhangi bir üretim menüsü için gereksinimleri önceden bildiğinizden emin olun.
+                        <br />
+                        Üretim yaparken,yapabileceğiniz tam miktarı girmeniz gerekir.
+                    </p>
+                    <h3>Eşya Dayanıklığı:</h3>
+                    <p>
+                        Neredeyse tüm eşyalar zamanla bozulur (silahlar dahil) Her bir eşyanın altındaki çubuk yavaş yavaş küçülür. Gittikçe daha fazla çürür ve sonunda kırmızımsı bir renge döner. Bir öğe tamamen yok edildiğinde , çubuk kırmızı renge döner.
+                    </p>
+                </div>
+                <div class="settings-menu">
+                    <input type="checkbox" checked name="enableHoldToDrag" /> Sol Click Basılı Tutarak Taşıma
+                    <br />
+                    <input type="checkbox" checked name="enableClickToClose" /> Envanterin Dışına Tıklayarak Kapama
+                    <br />
+                    <input type="checkbox" name="enableCtrlMovesHalf" /> Ctrl Yarım Hareket Eder (İşaretlenmemiş, Shift'i yarıya taşır)
+                    <br />
+                    <input type="checkbox" checked name="enableShowTooltips" /> Araç İpuçlarını Göster
+                    <br />
+                    <input type="checkbox" checked name="enableBlur" /> Arkaplan Blur Aktif Et
+                    <hr />
+                    <button type="button" class="save-settings">Kaydet</button>
+                    <button type="button" onclick="$('.settings-menu').fadeOut();">Kapat</button>
+            </div>
+        </div>
+    </body>
+</html>
